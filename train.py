@@ -1,5 +1,3 @@
-# train.py
-
 import csv
 import json
 import matplotlib.pyplot as plt
@@ -97,11 +95,9 @@ def plot_results(kms_orig, prices_orig, theta0, theta1, min_km, max_km, min_pric
     plt.scatter(kms_orig, prices_orig, label='Données réelles')
 
     x_line = [min(kms_orig), max(kms_orig)]
-
     x_line_norm = [(x - min_km) / (max_km - min_km) for x in x_line]
 
     y_line_norm = [theta0 + theta1 * x for x in x_line_norm]
-
     y_line = [denormalize_price(y, min_price, max_price) for y in y_line_norm]
 
     plt.plot(x_line, y_line, color='red', label='Ligne de régression')
